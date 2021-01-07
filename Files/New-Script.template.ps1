@@ -15,6 +15,7 @@ function {__name__} {
 
             This will run the function with the default options
         .NOTES
+            <__EXCLUDE_IMPORT__>    # this will prevent the script from being automatically imported via the $PROFILE
             Author  : {__author__}
             Email   : {__email__}
             Created : {__date__}
