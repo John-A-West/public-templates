@@ -7,7 +7,7 @@ function {__name__} {
         .INPUTS
             None
         .OUTPUTS
-            System.String
+            System.Management.Automation.PSCustomObject
             or
             none
         .EXAMPLE
@@ -19,9 +19,9 @@ function {__name__} {
             Email   : {__email__}
             Created : {__date__}
     #>
-    [CmdletBinding(DefaultParameterSetName = "{__defaultParameterSetName__}")]                            # if no changes: Get-*
-    # [CmdletBinding(SupportsShouldProcess, DefaultParameterSetName = "{__defaultParameterSetName__}")]   # if making changes: Set-*
-    # [OutputType([System.String], ParameterSetName = "{__defaultParameterSetName__}")]                   # use if returning an object
+    [CmdletBinding(DefaultParameterSetName = "{__defaultParameterSetName__}")]                                          # if no changes: Get-*
+    # [CmdletBinding(SupportsShouldProcess, DefaultParameterSetName = "{__defaultParameterSetName__}")]                 # if making changes: Set-*
+    # [OutputType([System.Management.Automation.PSCustomObject], ParameterSetName = "{__defaultParameterSetName__}")]   # use if returning an object
     param (
 
     )
