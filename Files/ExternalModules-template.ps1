@@ -5,8 +5,8 @@ $ModulePsd1Path = Join-Path $Parent ('{0}.psd1' -f $ModuleName)
 if ( Test-Path $ModulePsd1Path ) {
     $ModuleData = Import-PowerShellDataFile -Path $ModulePsd1Path
     # Get a list of all the ExternalModuleDependencies from the module manifest
-    $RequiredModules = $ModuleData.PrivateData.PSData.ExternalModuleDependencies
-    foreach ( $Name in $RequiredModules ) {
+    $ExternalModules = $ModuleData.PrivateData.PSData.ExternalModuleDependencies
+    foreach ( $Name in $ExternalModules ) {
         # Install the module if it's not already installed
         if ( $null -eq (Get-Module $Name -ListAvailable -ErrorAction SilentlyContinue) ) {
             $ModuleParams = @{
