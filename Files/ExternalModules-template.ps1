@@ -26,7 +26,15 @@ if ( Test-Path $ModulePsd1Path ) {
                 try {
                     Install-Module @ModuleParams @InstallParams -ErrorAction Stop
                 } catch {
-                    Write-Warning "Cannot install the dependent module '$Name' from the PSGallery. Please install it manually." -WarningAction Continue
+                    try {
+                        if ( $PSItem.Exception.Message -match 'use -AllowClobber parameter' ) {
+                            Install-Module @ModuleParams @InstallParams -AllowClobber -ErrorAction Stop
+                        } else {
+                            Write-Warning "Cannot install the dependent module '$Name' from the PSGallery. Please install it manually." -WarningAction Continue
+                        }
+                    } catch {
+                        Write-Warning "Cannot install the dependent module '$Name' from the PSGallery. Please install it manually." -WarningAction Continue
+                    }
                 }
             } else {
                 Write-Warning "The dependent module '$Name' is not available in the PSGallery. Please install it manually." -WarningAction Continue
@@ -34,3 +42,4 @@ if ( Test-Path $ModulePsd1Path ) {
         }
     }
 }
+Remove-Module ExternalModules -Force -ErrorAction SilentlyContinue
