@@ -35,7 +35,7 @@ function Install-EMRequiredModule {
     )
     try {
         $InstallModParams = @{
-            Name = $Name,
+            Name = $Name
             Repository = $Repository
             Scope = $Scope
             AcceptLicense = $true
